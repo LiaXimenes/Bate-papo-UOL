@@ -19,15 +19,19 @@
     <div class="top">
         <img class="logo" src="imagem/logo.png">
         <ion-icon name="people" class="people" onclick="sidebar()"></ion-icon>
-
-
     </div>
+
+    <ul class="chat">
+        <li class="singlemessage"><strong>Nome</strong> para <strong>privacidade</strong>: mensagem.
+
+        </li>
+    </ul>
 
 
 
     <div class="base">
         <input type="text" placeholder="Escreva aqui...">
-        <ion-icon name="paper-plane-outline" class="paperplane"></ion-icon>
+        <ion-icon name="paper-plane-outline" class="paperplane" onclick="sendMessage()"></ion-icon>
     </div>
 
 
@@ -55,7 +59,7 @@
 
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
