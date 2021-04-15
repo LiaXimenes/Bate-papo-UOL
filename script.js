@@ -1,26 +1,25 @@
-//askingName();
-
+let nameOfTheUser = "";
 const addmessage = document.querySelector(".chat");
 
-let nameOfTheUser = "";
+askingName();
+
 
 //perguntando e enviando nome pro server
 function askingName(){
-    let nameOfTheUser = prompt("Qual seu nome?");
+    nameOfTheUser = prompt("Qual seu nome?");
 
     const postingName = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants", 
     {name: nameOfTheUser})
    
-    postingName.then(goOn)
     postingName.catch(fail)
-}
-
-function goOn(){
-    alert("Deu bom, entra ai")
 }
 
 function fail(){
     nameOfTheUser = prompt("Escolha outro usuario");
+    const postingName = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants", 
+    {name: nameOfTheUser})
+   
+    postingName.catch(fail)
 }
 
 //requisição de permanencia
@@ -46,17 +45,23 @@ function processMessages(answer){
 }
 
 
+
 //enviando mensagens
 function sendMessage(){
+    let textMessage = document.querySelector(".message-of-user").value
     const sendingMessage = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages", 
     {from: nameOfTheUser,
-     to: "nome do destinatário (Todos se não for um específico)",
-     text: "mensagem digitada",
-     type: "message"
+     to: "Todos",
+     text: textMessage,
+     type: "message",
     }
     )
-
 }
+
+const elementoQueQueroQueApareca = document.querySelector(".chat");
+elementoQueQueroQueApareca.scrollIntoView();
+
+
 
 //sidebar lateral
 function sidebar(){
