@@ -67,7 +67,7 @@ input{
     width:259px;
     height: 667px;
     z-index:1;
-    position:absolute;
+    position:fixed;
     right:0;
     top:0;
 }
@@ -136,7 +136,7 @@ input{
     margin-right: 3px; 
 }
 
-.checkmark{
+.greenmark{
     color: green;
     width: 10px;
     height: 10px;
