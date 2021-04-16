@@ -76,22 +76,29 @@ function processMessages(answer){
 
 
 //enviando mensagens
+function enterMessage(event){
+    if(event.keyCode === 13){
+        sendMessage();
+
+    }  
+}
+
 function sendMessage(){
-    let textMessage = document.querySelector(".message-of-user").value
+    let textMessage = document.querySelector(".message-of-user").value;
     const sendingMessage = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages", 
     {from: nameOfTheUser,
-     to: "Todos",
-     text: textMessage,
-     type: "message",
+    to: "Todos",
+    text: textMessage,
+    type: "message",
     })
-    
-    sendingMessage.then(goOn)
-    sendingMessage.catch(fail)
+
+    sendingMessage.then(goOn);
+    sendingMessage.catch(fail);
 
 }
 
 
-//sidebar lateral
+//sidebar
 function sidebar(){
     const takeOutHidden = document.querySelector(".sidebar");
     takeOutHidden.classList.remove("hidden");
@@ -105,10 +112,25 @@ function findingNewPeople(names){
     const chooseName = document.querySelector(".name-to-choose");
     for(let i = 0; i < names.data.length; i++){
         chooseName.innerHTML += 
-        `<li class="choice"><ion-icon name="person-circle" class="ionchoice"></ion-icon> ${names.data[i].name}
+        `<li class="choice" onclick="chosenPerson(this)"><ion-icon name="person-circle" class="ionchoice"></ion-icon> ${names.data[i].name}
         <ion-icon name="checkmark" class="greenmark hidden"></ion-icon>
         </li>`
     }
+
+    const showOpacity = document.querySelector(".opacity");
+    showOpacity.classList.add("overlay");
+}
+
+function chosenPerson(){
+    const showGreenMark = document.querySelector(".greenmark");
+    showGreenMark.classList.remove("hidden");
+    console.log(classList)
+}
+
+function chosenCategory(){
+    const showGreenMark = document.querySelector(".greenmark");
+    showGreenMark.classList.remove("hidden");
+    console.log(classList)
 
 }
 

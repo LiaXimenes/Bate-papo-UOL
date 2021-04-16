@@ -14,7 +14,7 @@
     <title>Bate-Papo UOL</title>
 
 </head>
-<body>
+<body class="opacity">
 
     <div class="top">
         <img class="logo" src="imagem/logo.png">
@@ -28,8 +28,8 @@
 
 
     <div class="base">
-        <input type="text" placeholder="Escreva aqui..." class="message-of-user">
-        <ion-icon name="paper-plane-outline" class="paperplane" onclick="sendMessage()"></ion-icon>
+        <input type="text" placeholder="Escreva aqui..." class="message-of-user" onkeypress="enterMessage(event)">
+        <ion-icon name="paper-plane-outline" class="paperplane" onclick="sendMessage(event)"></ion-icon>
     </div>
 
 
@@ -46,12 +46,12 @@
         </ul>
         <div class="choose-visibility"><p><strong>Escolha a visibilidade:</strong></p></div>
         <ul>
-            <li class="choice"><ion-icon name="lock-open" class="ionchoice"></ion-icon> Público
-                <ion-icon name="checkmark" class="checkmark hidden"></ion-icon>
+            <li class="category" onclick="chosenCategory(this)"><ion-icon name="lock-open" class="ionchoice"></ion-icon> Público
+                <ion-icon name="checkmark" class="greenmark hidden"></ion-icon>
             </li>
 
-            <li class="choice"><ion-icon name="lock-closed" class="ionchoice"></ion-icon> Reservado
-                <ion-icon name="checkmark" class="checkmark hidden"></ion-icon>
+            <li class="category" onclick="chosenCategory(this)"><ion-icon name="lock-closed" class="ionchoice"></ion-icon> Reservado
+                <ion-icon name="checkmark" class="greenmark hidden"></ion-icon>
             </li>
         </ul>
 
@@ -61,3 +61,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
