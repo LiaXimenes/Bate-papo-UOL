@@ -78,16 +78,36 @@ input{
     overflow: scroll;
 }
 
-.singlemessage{
+.single-message{
     width: 100%;
     height: 40px;
-    background: #ffffff;
     margin-bottom: 4px;
     display: flex;
     align-items: center;
+    margin-left: 3px;
 }
 
-.choosepeople{
+.status{
+    background: #DCDCDC;
+
+}
+
+.message{
+    background: #ffffff;
+}
+
+.private-message{
+    background: #FFDEDE;
+
+}
+
+
+.sent-time{
+    color:#AAAAAA;
+    font-size: 13px;
+}
+
+.choose-people{
     width:259;
     height: 84px;
     display: flex;
@@ -95,7 +115,7 @@ input{
     align-items: center;
 }
 
-.choosevisibility{
+.choose-visibility{
     width:259;
     height: 66px;
     display: flex;
@@ -125,3 +145,8 @@ input{
 .hidden{
     display: none;
 }
+
+.name-to-choose{
+    overflow: scroll;
+}
+

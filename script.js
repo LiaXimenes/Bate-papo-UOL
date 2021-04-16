@@ -11,7 +11,12 @@ function askingName(){
     const postingName = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants", 
     {name: nameOfTheUser})
    
+    postingName.then(goOn)
     postingName.catch(fail)
+}
+
+function goOn(){
+    setInterval(receivingMessages, 3000)
 }
 
 function fail(){
@@ -31,17 +36,40 @@ function constantRequisition(){
 }
 
 //pegando mensagens do server
-let promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages");
-promise.then(processMessages);
+function receivingMessages(){
+    let promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages");
+    promise.then(processMessages);
+}
 
 function processMessages(answer){
     console.log(answer);
+    addmessage.innerHTML = "";
+
     for(let i = 0; i < answer.data.length; i++){
-        addmessage.innerHTML +=
-        `<li class="singlemessage"><strong>${answer.data[i].from}</strong> para 
-        <strong>${answer.data[i].to}</strong>:${answer.data[i].text}.
-        </li>`
+
+        if(answer.data[i].type === "status"){
+            addmessage.innerHTML +=
+            `<li class="single-message status"><p class="sent-time"> (${answer.data[i].time})
+            </p> <strong>${answer.data[i].from}</strong> para 
+            <strong>${answer.data[i].to}</strong>: ${answer.data[i].text}.
+            </li>`
+        } else if (answer.data[i].type === "message") {
+            addmessage.innerHTML += 
+            `<li class="single-message message"><p class="sent-time"> (${answer.data[i].time})
+            </p> <strong>${answer.data[i].from}</strong> para 
+            <strong>${answer.data[i].to}</strong>: ${answer.data[i].text}.
+            </li>`
+        } else if (answer.data[i].type === "private_message") {
+            addmessage.innerHTML +=
+            `<li class="single-message private-message"><p class="sent-time"> (${answer.data[i].time})
+            </p> <strong>${answer.data[i].from}</strong> para 
+            <strong>${answer.data[i].to}</strong>: ${answer.data[i].text}.
+            </li>`
+        }
     }
+
+    const elementoQueQueroQueApareca = document.querySelector('.chat li:last-child');
+    elementoQueQueroQueApareca.scrollIntoView();
 }
 
 
@@ -57,10 +85,6 @@ function sendMessage(){
     }
     )
 }
-
-const elementoQueQueroQueApareca = document.querySelector(".chat");
-elementoQueQueroQueApareca.scrollIntoView();
-
 
 
 //sidebar lateral
